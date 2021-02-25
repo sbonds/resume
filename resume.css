@@ -1,0 +1,262 @@
+/* CSS3 file for my resume
+   created by Steve Bonds
+   
+   If you can read this, let me know in the interview-- I like people who look under
+   the covers.  :-)
+*/
+
+/* Color scheme plan: Blue scheme to correlate with the large companies I tend to work
+ *                    for such as HP.
+ * Light Blue: #57AEF4
+ * Max luminosity, and lightly less saturated, to make it even lighter: #9CD3FF,
+ *    The above is a much better background color for readability but is still reminiscient of the same blue color.
+ * Dark Blue Trim: #4A8BE9
+ * Link color (darker): #0D5888
+ * Text is Basic Black: #000000
+*/
+
+body {
+    background-color: #FFFFFF;
+    background-image: url("LinkedIn%20C7000%20Background.jpg");
+    background-repeat: repeat-y;
+    color: #000000;
+	font-family: "Arial", "Helvetica", sans-serif;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+header {
+    font-family: "Times New Roman", serif;
+    background-color: #0D5888;
+    color: #FFFFFF;
+    border-style: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: left;
+}
+
+.left_header  {
+	float: left;
+}
+
+.summary_of_steve {
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+header h1 {
+    margin-bottom: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 400%;
+}
+
+header h2 {
+    margin-bottom: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+
+header p {
+    margin-bottom: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 150%;
+}
+
+
+
+header a {
+	font-family: "Courier", "Courier New", "Fixed", monospace;
+    text-decoration: none;
+    color: #9CD3FF;
+}
+
+header a:link {
+    color: #57AEF4;
+}
+
+header a:visited {
+    color: #9CD3FF;
+}
+
+header a:hover {
+    color: #4A8BE9;
+}
+
+nav {
+    text-align: center;
+}
+
+nav.topnav {
+    background-color: #0D5888;
+    color: #FFFFFF;
+    display: block;
+    float: none;
+    width: auto;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+nav.topnav a {
+    text-decoration: none;
+    color: #9CD3FF;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+nav.bottomnav ul {
+    margin-top: 0.5em;
+}
+
+nav li {
+    display: inline-block;
+    padding-right: 2em;
+}
+
+nav.topnav a:link {
+    color: #57AEF4;
+}
+
+nav.topnav a:visited {
+    color: #9CD3FF;
+}
+
+nav.topnav a:hover {
+    color: #4A8BE9;
+}
+
+a:link {
+    color: #0D5888; /* Board holder blue works well for links, almost too light, but not quite. */
+}
+
+a:visited {
+    color: #4A8BE9; /* Blue Trim makes enough of a contrast to show the difference vs. unvisited. */
+}
+
+footer {
+    margin-top: 5px;
+    border-top: 1px solid #000000;
+    font-size: 80%;
+}
+
+footer.p {
+    margin-top: 1em;
+}
+
+input {
+    display: block;
+    width: 30em;
+    margin-bottom: 1em;
+}
+
+input[type="submit"] {
+    width: auto;
+    margin-left: 15em;
+}
+
+textarea {
+        display: block;
+        width: 30em;
+        height: 5em;
+        margin-bottom: 1em;
+}
+
+label {
+    float: left;
+    display: block;
+    text-align: right;
+    width: 8em;
+    padding-right: 1em;
+}
+
+#wrapper {
+    background-color: #9CD3FF;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 340px;
+    max-width: 800px;
+    padding-top: 0px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    border-radius: 10px;
+    border-style: outset;
+    border-color: #4A8BE9;
+}
+
+/* Image display choices based on screen size */
+.medium {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tiny {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Switch to a smartphone-style narrow/vertical layout and
+    display tiny images for tiny screens */
+@media only screen and (max-width: 839px) {
+
+    nav.topnav {
+        padding: 0;
+        margin: 0;
+    }
+    
+    nav.bottomnav ul {
+        margin: 0;
+    }
+    
+    nav li {
+        display: block;
+        border-bottom: solid;
+        border-width: 1px;
+    }
+    
+    nav a {
+        padding: 0.4em;
+        font-size: 1.3em;
+    }
+    
+    h1 {
+        border-bottom: solid;
+        border-width: 1px;
+    }
+    
+    .tiny {
+        display: block;
+    }
+
+    .medium {
+        display: none;
+    }
+
+    #wrapper {
+        width: auto;
+        margin: 0;
+        box-shadow: none;
+        border: none;
+    }
+}
+
+header, nav, main, footer { display: block; }
