@@ -8,7 +8,7 @@
 /* Color scheme plan: Blue scheme to correlate with the large companies I tend to work
  *                    for such as HP.
  * Light Blue: #57AEF4
- * Max luminosity, and lightly less saturated, to make it even lighter: #9CD3FF,
+ * Max luminosity, and lightly less saturated, to make it even lighter: #ADDAFF,
  *    The above is a much better background color for readability but is still reminiscient of the same blue color.
  * Dark Blue Trim: #4A8BE9
  * Link color (darker): #0D5888
@@ -74,7 +74,7 @@ header p {
 header a {
     font-family: "Courier", "Courier New", "Fixed", monospace;
     text-decoration: none;
-    color: #9CD3FF;
+    color: #ADDAFF;
 }
 
 header a:link {
@@ -82,7 +82,7 @@ header a:link {
 }
 
 header a:visited {
-    color: #9CD3FF;
+    color: #ADDAFF;
 }
 
 header a:hover {
@@ -108,7 +108,7 @@ nav.topnav {
 
 nav.topnav a {
     text-decoration: none;
-    color: #9CD3FF;
+    color: #ADDAFF;
 }
 
 nav ul {
@@ -131,7 +131,7 @@ nav.topnav a:link {
 }
 
 nav.topnav a:visited {
-    color: #9CD3FF;
+    color: #ADDAFF;
 }
 
 nav.topnav a:hover {
@@ -185,7 +185,7 @@ label {
 }
 
 #wrapper {
-    background-color: #9CD3FF;
+    background-color: #addaff;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
