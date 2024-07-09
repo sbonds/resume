@@ -138,12 +138,10 @@ nav.topnav a:hover {
 
 a:link {
     color: #2C6F51;
-    /* Board holder blue works well for links, almost too light, but not quite. */
 }
 
 a:visited {
     color: #3A9169;
-    /* Blue Trim makes enough of a contrast to show the difference vs. unvisited. */
 }
 
 footer {
