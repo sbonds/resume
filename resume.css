@@ -6,11 +6,12 @@
 */
 
 /* Color scheme plan: Green. I like green.
- *    Created with "shades" based on #00EB81 at https://color.adobe.com/create/color-wheel
- * Light Green: #00B060 
- * Very Light Green: #00EB81,
- * Dark Trim: #006337
- * Link color (darker): #004124
+ *    Created with "shades" based on 66ffba at https://color.adobe.com/create/color-wheel
+ *    Also helpful for lightening/darkening: https://hslpicker.com/#66ffba
+ * Very Light Green: #66FFBA,
+ * Light Green: #63F6B4 
+ * Dark Trim: #3A9169
+ * Link color (darker): #2C6F51
  * Text is Basic Black: #000000
 */
 
@@ -30,7 +31,7 @@ dd {
 
 header {
     font-family: "Times New Roman", serif;
-    background-color: #004124;
+    background-color: #2C6F51;
     color: #FFFFFF;
     border-style: none;
     border-top-left-radius: 10px;
@@ -71,19 +72,19 @@ header p {
 header a {
     font-family: "Courier", "Courier New", "Fixed", monospace;
     text-decoration: none;
-    color: #00EB81;
+    color: #66FFBA;
 }
 
 header a:link {
-    color: #00B060;
+    color: #63F6B4;
 }
 
 header a:visited {
-    color: #00EB81;
+    color: #66FFBA;
 }
 
 header a:hover {
-    color: #006337;
+    color: #3A9169;
 }
 
 nav {
@@ -91,7 +92,7 @@ nav {
 }
 
 nav.topnav {
-    background-color: #004124;
+    background-color: #2C6F51;
     color: #FFFFFF;
     display: block;
     float: none;
@@ -105,7 +106,7 @@ nav.topnav {
 
 nav.topnav a {
     text-decoration: none;
-    color: #00EB81;
+    color: #66FFBA;
 }
 
 nav ul {
@@ -124,24 +125,24 @@ nav li {
 }
 
 nav.topnav a:link {
-    color: #00B060;
+    color: #63F6B4;
 }
 
 nav.topnav a:visited {
-    color: #00EB81;
+    color: #66FFBA;
 }
 
 nav.topnav a:hover {
-    color: #006337;
+    color: #3A9169;
 }
 
 a:link {
-    color: #004124;
+    color: #2C6F51;
     /* Board holder blue works well for links, almost too light, but not quite. */
 }
 
 a:visited {
-    color: #006337;
+    color: #3A9169;
     /* Blue Trim makes enough of a contrast to show the difference vs. unvisited. */
 }
 
@@ -182,7 +183,7 @@ label {
 }
 
 #wrapper {
-    background-color: #00EB81;
+    background-color: #66FFBA;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
@@ -193,7 +194,7 @@ label {
     padding-left: 30px;
     border-radius: 10px;
     border-style: outset;
-    border-color: #006337;
+    border-color: #3A9169;
 }
 
 /* Image display choices based on screen size */
