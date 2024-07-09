@@ -9,18 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: azure/login@v1
+    - uses: actions/checkout@v4
+    - uses: azure/login@v2
       with:
           creds: ${{ secrets.AZURE_SP_GITHUBACTIONSFORRESUME }}
 
     - name: Upload to blob storage
-      uses: azure/CLI@v1
+      uses: azure/CLI@v2
       with:
         inlineScript: |
             az storage blob upload-batch --account-name  ${{ vars.AZURE_STORAGE_ACCOUNT_NAME }} --auth-mode key -d '$web' -s .
     - name: Purge CDN endpoint
-      uses: azure/CLI@v1
+      uses: azure/CLI@v2
       with:
         inlineScript: |
            az cdn endpoint purge --content-paths  "/*" --profile-name ${{ vars.AZURE_ENDPOINT_CDN_PROFILE_NAME }} --name ${{ vars.AZURE_ENDPOINT_NAME }} --resource-group ${{ vars.AZURE_ENDPOINT_RESOURCE_GROUP }}

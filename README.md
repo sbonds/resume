@@ -67,3 +67,7 @@ Rather than hardcode values like my Storage Account name and Endpoint Name, I'll
 * `AZURE_ENDPOINT_CDN_PROFILE_NAME`: name of the Azure Front Door and CDN profile
 
 I created `.github/workflows/main.yml` with steps to checkout the content, upload it to the Azure Storage Account, and flush the CDN so it knows there's new content available.
+
+### Fix deprecated Node.js v16 usage
+
+The Microsoft Learn example contained some steps which use node16 by default and this triggered a deprecation warning. Update them to use the latest version.
