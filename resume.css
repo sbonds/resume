@@ -48,6 +48,7 @@ header {
     font-weight: bold;
     font-size: 110%;
     text-align: center;
+    padding-bottom: 5px;
 }
 
 header h1 {
