@@ -5,13 +5,12 @@
    the covers.  :-)
 */
 
-/* Color scheme plan: Blue scheme to correlate with the large companies I tend to work
- *                    for such as HP.
- * Light Blue: #57AEF4
- * Max luminosity, and lightly less saturated, to make it even lighter: #ADDAFF,
- *    The above is a much better background color for readability but is still reminiscient of the same blue color.
- * Dark Blue Trim: #4A8BE9
- * Link color (darker): #0D5888
+/* Color scheme plan: Green. I like green.
+ *    Created with "shades" based on #00EB81 at https://color.adobe.com/create/color-wheel
+ * Light Green: #00B060 
+ * Very Light Green: #00EB81,
+ * Dark Trim: #006337
+ * Link color (darker): #004124
  * Text is Basic Black: #000000
 */
 
@@ -31,7 +30,7 @@ dd {
 
 header {
     font-family: "Times New Roman", serif;
-    background-color: #0D5888;
+    background-color: #004124;
     color: #FFFFFF;
     border-style: none;
     border-top-left-radius: 10px;
@@ -72,19 +71,19 @@ header p {
 header a {
     font-family: "Courier", "Courier New", "Fixed", monospace;
     text-decoration: none;
-    color: #ADDAFF;
+    color: #00EB81;
 }
 
 header a:link {
-    color: #57AEF4;
+    color: #00B060;
 }
 
 header a:visited {
-    color: #ADDAFF;
+    color: #00EB81;
 }
 
 header a:hover {
-    color: #4A8BE9;
+    color: #006337;
 }
 
 nav {
@@ -92,7 +91,7 @@ nav {
 }
 
 nav.topnav {
-    background-color: #0D5888;
+    background-color: #004124;
     color: #FFFFFF;
     display: block;
     float: none;
@@ -106,7 +105,7 @@ nav.topnav {
 
 nav.topnav a {
     text-decoration: none;
-    color: #ADDAFF;
+    color: #00EB81;
 }
 
 nav ul {
@@ -125,24 +124,24 @@ nav li {
 }
 
 nav.topnav a:link {
-    color: #57AEF4;
+    color: #00B060;
 }
 
 nav.topnav a:visited {
-    color: #ADDAFF;
+    color: #00EB81;
 }
 
 nav.topnav a:hover {
-    color: #4A8BE9;
+    color: #006337;
 }
 
 a:link {
-    color: #0D5888;
+    color: #004124;
     /* Board holder blue works well for links, almost too light, but not quite. */
 }
 
 a:visited {
-    color: #4A8BE9;
+    color: #006337;
     /* Blue Trim makes enough of a contrast to show the difference vs. unvisited. */
 }
 
@@ -183,7 +182,7 @@ label {
 }
 
 #wrapper {
-    background-color: #addaff;
+    background-color: #00EB81;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
@@ -194,7 +193,7 @@ label {
     padding-left: 30px;
     border-radius: 10px;
     border-style: outset;
-    border-color: #4A8BE9;
+    border-color: #006337;
 }
 
 /* Image display choices based on screen size */
