@@ -18,7 +18,7 @@
 body {
     background-color: #FFFFFF;
     color: #000000;
-    font-family: "Arial", "Helvetica", sans-serif;
+    font-family: "Verdana", "Helvetica", sans-serif;
 }
 
 dt {
@@ -44,16 +44,18 @@ header {
 }
 
 .summary_of_steve {
-    font-family: "Arial", "Helvetica", sans-serif;
+    font-family: "Verdana", "Helvetica", sans-serif;
     font-weight: bold;
     font-size: 110%;
     text-align: center;
 }
 
 header h1 {
+    font-family: "Sedan SC", "Georgia", serif;
     margin-bottom: 0;
     padding-right: 20px;
     padding-left: 20px;
+    padding-top:10px;
     font-size: 400%;
 }
 
@@ -71,7 +73,7 @@ header p {
 }
 
 header a {
-    font-family: "Courier", "Courier New", "Fixed", monospace;
+    font-family: "Courier New", Courier, monospace;
     text-decoration: none;
     color: #66FFBA;
 }
