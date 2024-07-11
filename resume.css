@@ -7,11 +7,11 @@
 
 /* Color scheme plan: Green. I like green.
  *    Created with "shades" based on 66ffba at https://color.adobe.com/create/color-wheel
- *    Also helpful for lightening/darkening: https://hslpicker.com/#66ffba
- * Very Light Green: #66FFBA,
- * Light Green: #63F6B4 
- * Dark Trim: #3A9169
- * Link color (darker): #2C6F51
+ *    Also helpful for lightening/darkening/desaturating: https://hslpicker.com/#96debe
+ * Very Light Green: #96DEBE,
+ * Light Green: #91D5B7 
+ * Dark Trim: #63917C
+ * Link color (darker): #354D42
  * Text is Basic Black: #000000
 */
 
@@ -31,7 +31,7 @@ dd {
 
 header {
     font-family: "Times New Roman", serif;
-    background-color: #2C6F51;
+    background-color: #354D42;
     color: #FFFFFF;
     border-style: none;
     border-top-left-radius: 10px;
@@ -76,19 +76,19 @@ header p {
 header a {
     font-family: "Courier New", Courier, monospace;
     text-decoration: none;
-    color: #66FFBA;
+    color: #96DEBE;
 }
 
 header a:link {
-    color: #63F6B4;
+    color: #91D5B7;
 }
 
 header a:visited {
-    color: #66FFBA;
+    color: #96DEBE;
 }
 
 header a:hover {
-    color: #3A9169;
+    color: #63917C;
 }
 
 nav {
@@ -96,7 +96,7 @@ nav {
 }
 
 nav.topnav {
-    background-color: #2C6F51;
+    background-color: #354D42;
     color: #FFFFFF;
     display: block;
     float: none;
@@ -110,7 +110,7 @@ nav.topnav {
 
 nav.topnav a {
     text-decoration: none;
-    color: #66FFBA;
+    color: #96DEBE;
 }
 
 nav ul {
@@ -129,23 +129,23 @@ nav li {
 }
 
 nav.topnav a:link {
-    color: #63F6B4;
+    color: #91D5B7;
 }
 
 nav.topnav a:visited {
-    color: #66FFBA;
+    color: #96DEBE;
 }
 
 nav.topnav a:hover {
-    color: #3A9169;
+    color: #63917C;
 }
 
 a:link {
-    color: #2C6F51;
+    color: #354D42;
 }
 
 a:visited {
-    color: #3A9169;
+    color: #63917C;
 }
 
 footer {
@@ -185,7 +185,7 @@ label {
 }
 
 #wrapper {
-    background-color: #66FFBA;
+    background-color: #96DEBE;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
@@ -196,7 +196,7 @@ label {
     padding-left: 30px;
     border-radius: 10px;
     border-style: outset;
-    border-color: #3A9169;
+    border-color: #63917C;
 }
 
 /* Image display choices based on screen size */
