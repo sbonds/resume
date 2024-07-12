@@ -18,7 +18,7 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-            az storage blob sync --account-name ${{ vars.AZURE_STORAGE_ACCOUNT_NAME }} --exclude-path .git --container '$web' --source .
+            az storage blob sync --account-name ${{ vars.AZURE_STORAGE_ACCOUNT_NAME }} --exclude-path .git --exclude-path .github --container '$web' --source .
     - name: Purge CDN endpoint
       uses: azure/CLI@v2
       with:
