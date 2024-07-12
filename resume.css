@@ -43,6 +43,10 @@ header {
     float: left;
 }
 
+.right_header p {
+    margin-top: 5px;
+}
+
 .summary_of_steve {
     font-family: "Verdana", "Helvetica", sans-serif;
     font-weight: bold;
