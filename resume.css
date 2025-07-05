@@ -203,6 +203,10 @@ label {
     border-color: #63917C;
 }
 
+#wrapper table {
+    padding-top: 15px;
+}
+
 /* Image display choices based on screen size */
 
 .medium {
