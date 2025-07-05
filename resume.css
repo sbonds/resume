@@ -269,3 +269,7 @@ label {
 header, nav, main, footer {
     display: block;
 }
+
+.work_history_entry {
+    page-break-inside: avoid
+}
