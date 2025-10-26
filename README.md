@@ -22,40 +22,72 @@ Currently, those resources are provisioned manually via the Azure Portal. I've o
 
 I'm more familiar with Azure DevOps pipelines, so I'll do this using GitHub actions as a way to learn.
 
-The general process follows [Microsoft Learn: Use GitHub Actions workflow to deploy your static website in Azure Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-static-site-github-actions?tabs=userlevel)
+The general process follows [Microsoft Learn: Use GitHub Actions workflow to deploy your static website in Azure Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-static-site-github-actions?tabs=openid)
 
 ### Setting up access into Azure
 
-The example given in the above is:
+I chose OpenID with User-assigned Managed Identity as the credential type since the Service Principal auth expires regularly, which is quite an annoyance for this rarely-used and long-lived pipeline.
 
-```text
-az ad sp create-for-rbac --name "myML" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name> --json-auth
-```
-
-Which allows the GitHub action to make changes to any resource in the given resource group, which is more than necessary to upload content to a storage account and purge a CDN endpoint. I'll limit the scopes of the Service Principal I create to something more appropriately limited. To make the command copy-paste-able, I'll set some configuration via environment variables which contain the Azure Resource ID for each of the the above resources:
+I'll limit the scopes of the Managed Identity I create to a level which can upload content to a storage account and purge a CDN endpoint, in keeping with the security principle of least access. To make the command copy-paste-able, I'll set some configuration via environment variables which contain the Azure Resource ID for each of the the above resources:
 
 ```bash
 export AZURE_STORAGE_ACCOUNT_ID=resource-id-for-the-web-content-storage-account
 export AZURE_ENDPOINT_ID=resource-id-for-the-azure-endpoint
+export AZURE_RESOURCE_GROUP_FOR_IDENTITY=resource-group-holding-above-resources
 ```
 
-Create the Service Principal using my Azure Owner account with the scope of the storage account and endpoint:
+Create the Managed Identity using my Azure Owner account with the scope of the storage account and endpoint:
 
 ```bash
-az ad sp create-for-rbac \
-  --name "githubActionsForResume" \
-  --role contributor \
-  --scopes "$AZURE_STORAGE_ACCOUNT_ID" "$AZURE_ENDPOINT_ID" \
-  --json-auth
+az identity create \
+  --name "githubActionsForResumeOIDC" \
+  --resource-group "$AZURE_RESOURCE_GROUP_FOR_IDENTITY"
 ```
 
 The output was saved in my secure password storage.
 
-### Providing the Service Principal credential to GitHub
+Get the identity ID to use for role assignments since it doesn't seem to be found by name using `--assignee`:
+
+```bash
+identityId=$(az identity show --name "githubActionsForResumeOIDC" --resource-group "$AZURE_RESOURCE_GROUP_FOR_IDENTITY" --query principalId --out tsv)
+```
+
+Grant Contributor permissions to this Managed Identity, limited to the Storage Account and Azure Endpoint:
+
+```bash
+az role assignment create \
+  --assignee $identityId \
+  --role contributor \
+  --scope "$AZURE_STORAGE_ACCOUNT_ID"
+az role assignment create \
+  --assignee $identityId \
+  --role contributor \
+  --scope "$AZURE_ENDPOINT_ID"
+```
+
+### Federating this identity with GitHub
+
+I used the Azure Portal for this to assist with error checking.
+
+TODO: Describe this process using Azure CLI.
+
+### Providing the Managed Identity credential to GitHub
 
 I'm using the GitHub web interface for simplicity, but this could be done more consistently and reproducibly using the GitHub CLI via `gh secret set`. The credential will be scoped to this repository only since this is the only place which needs access to those Azure resources.
 
-I named this credential `AZURE_SP_GITHUBACTIONSFORRESUME` to show that it's associated with an Azure Service Principal and the Service Principal's name.
+The secrets created are:
+
+* `AZURE_CLIENT_ID`: contents of `az identity show --name "githubActionsForResumeOIDC" --resource-group "$AZURE_RESOURCE_GROUP_FOR_IDENTITY" --query clientId`
+* `AZURE_SUBSCRIPTION_ID`: `az account show --query id`
+* `AZURE_TENANT_ID`: contents of `az identity show --name "githubActionsForResumeOIDC" --resource-group "$AZURE_RESOURCE_GROUP_FOR_IDENTITY" --query tenantId`
+
+Script to show these three items:
+
+```bash
+echo AZURE_CLIENT_ID: $(az identity show --name "githubActionsForResumeOIDC" --resource-group "$AZURE_RESOURCE_GROUP_FOR_IDENTITY" --query clientId -o tsv)
+echo AZURE_SUBSCRIPTION_ID: $(az account show --query id -o tsv)
+echo AZURE_TENANT_ID: $(az identity show --name "githubActionsForResumeOIDC" --resource-group "$AZURE_RESOURCE_GROUP_FOR_IDENTITY" --query tenantId -o tsv)
+```
 
 ### Defining the GitHub Action workflow
 
