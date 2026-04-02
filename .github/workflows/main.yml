@@ -25,18 +25,15 @@ jobs:
         wget https://aka.ms/downloadazcopy-v10-linux
         tar -xzf downloadazcopy-v10-linux
         sudo cp ./azcopy_linux_amd64_*/azcopy /usr/local/bin/.
-        sudo mkdir -p /root/.azure/bin
-        sudo cp ./azcopy_linux_amd64_*/azcopy /root/.azure/bin/.
         sudo chmod 755 /usr/local/bin/azcopy
-        sudo chmod 755 /root/.azure/bin/azcopy
         which azcopy
         azcopy --version
-        /root/.azure/bin/azcopy --version
     - name: Upload to blob storage
       uses: azure/CLI@v3
       with:
         inlineScript: |
-            az storage blob sync --account-name ${{ vars.AZURE_STORAGE_ACCOUNT_NAME }} --exclude-path .git --exclude-path .github --container '$web' --source .
+            #az storage blob sync --account-name ${{ vars.AZURE_STORAGE_ACCOUNT_NAME }} --exclude-path .git --exclude-path .github --container '$web' --source .
+            azcopy sync . https://${{ vars.AZURE_STORAGE_ACCOUNT_NAME }}.blob.core.windows.net/\$web --exclude-pattern ".git;.github"
     - name: Purge CDN endpoint
       uses: azure/CLI@v3
       with:
