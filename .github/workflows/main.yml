@@ -20,6 +20,12 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    - name: Install AzCopy
+      run: |
+        wget https://aka.ms/downloadazcopy-v10-linux
+        tar -xzf downloadazcopy-v10-linux
+        sudo cp ./azcopy_linux_amd64_*/azcopy /usr/local/bin/.
+        azcopy --version
     - name: Upload to blob storage
       uses: azure/CLI@v3
       with:

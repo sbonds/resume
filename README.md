@@ -71,6 +71,8 @@ I used the Azure Portal for this to assist with error checking.
 
 TODO: Describe this process using Azure CLI.
 
+Reference: [Use the Azure Login action with OpenID Connect](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect)
+
 ### Providing the Managed Identity credential to GitHub
 
 I'm using the GitHub web interface for simplicity, but this could be done more consistently and reproducibly using the GitHub CLI via `gh secret set`. The credential will be scoped to this repository only since this is the only place which needs access to those Azure resources.
