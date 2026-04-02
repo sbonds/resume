@@ -29,6 +29,10 @@ jobs:
         which azcopy
         azcopy --version
     - name: Upload to blob storage
+      env:
+        # Thanks https://blog.timja.dev/using-azcopy-in-github-actions-with-federated-credentials/
+        AZCOPY_AUTO_LOGIN_TYPE: AZCLI
+        AZCOPY_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       run: |
         azcopy sync . https://${{ vars.AZURE_STORAGE_ACCOUNT_NAME }}.blob.core.windows.net/\$web --exclude-pattern ".git;.github"
     - name: Purge CDN endpoint
