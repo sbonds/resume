@@ -27,8 +27,8 @@ jobs:
         sudo cp ./azcopy_linux_amd64_*/azcopy /usr/local/bin/.
         sudo mkdir -p /root/.azure/bin
         sudo cp ./azcopy_linux_amd64_*/azcopy /root/.azure/bin/.
-        chmod 755 /usr/local/bin/azcopy
-        chmod 755 /root/.azure/bin/azcopy
+        sudo chmod 755 /usr/local/bin/azcopy
+        sudo chmod 755 /root/.azure/bin/azcopy
         which azcopy
         azcopy --version
         /root/.azure/bin/azcopy --version
