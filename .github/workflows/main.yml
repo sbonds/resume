@@ -25,7 +25,12 @@ jobs:
         wget https://aka.ms/downloadazcopy-v10-linux
         tar -xzf downloadazcopy-v10-linux
         sudo cp ./azcopy_linux_amd64_*/azcopy /usr/local/bin/.
+        sudo cp ./azcopy_linux_amd64_*/azcopy /root/.azure/bin/.
+        chmod 755 /usr/local/bin/azcopy
+        chmod 755 /root/.azure/bin/./azcopy
+        which azcopy
         azcopy --version
+        /root/.azure/bin/azcopy --version
     - name: Upload to blob storage
       uses: azure/CLI@v3
       with:
