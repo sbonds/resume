@@ -1,11 +1,6 @@
 name: Resume Upload to Azure
 # Based on https://docs.github.com/en/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-static-web-app
 
-env:
-  APP_LOCATION: "/" # location of your client code
-  API_LOCATION: "" # location of your api source code - optional
-  OUTPUT_LOCATION: "." # location of client code build output
-
 on:
   push:
     branches:
