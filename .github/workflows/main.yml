@@ -14,29 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: azure/login@v3
+    - uses: azure/login@v2
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Install AzCopy
-      run: |
-        wget https://aka.ms/downloadazcopy-v10-linux
-        tar -xzf downloadazcopy-v10-linux
-        sudo cp ./azcopy_linux_amd64_*/azcopy /usr/local/bin/.
-        sudo chmod 755 /usr/local/bin/azcopy
-        which azcopy
-        azcopy --version
     - name: Upload to blob storage
-      env:
-        # Thanks https://blog.timja.dev/using-azcopy-in-github-actions-with-federated-credentials/
-        AZCOPY_AUTO_LOGIN_TYPE: AZCLI
-        AZCOPY_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      run: |
-        azcopy sync . https://${{ vars.AZURE_STORAGE_ACCOUNT_NAME }}.blob.core.windows.net/\$web --exclude-pattern ".git;.github"
+      uses: azure/CLI@v2
+      with:
+        inlineScript: |
+            az storage blob sync --account-name ${{ vars.AZURE_STORAGE_ACCOUNT_NAME }} --exclude-path .git --exclude-path .github --container '$web' --source .
     - name: Purge CDN endpoint
-      uses: azure/CLI@v3
+      uses: azure/CLI@v2
       with:
         inlineScript: |
            az cdn endpoint purge --content-paths  "/*" --profile-name ${{ vars.AZURE_ENDPOINT_CDN_PROFILE_NAME }} --name ${{ vars.AZURE_ENDPOINT_NAME }} --resource-group ${{ vars.AZURE_ENDPOINT_RESOURCE_GROUP }}
