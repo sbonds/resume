@@ -105,3 +105,45 @@ I created `.github/workflows/main.yml` with steps to checkout the content, uploa
 ### Fix deprecated Node.js v16 usage
 
 The Microsoft Learn example contained some steps which use node16 by default and this triggered a deprecation warning. Update them to use the latest version.
+
+## Azure Static Web App
+
+### Static Web App created using "other" repo: no luck
+
+I tried to make this work, but there seems to be more to it than these pages imply:
+
+* [GitHub Actions: Deploying to Azure Static Web App](https://docs.github.com/en/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-static-web-app)
+* [Quickstart: Building your first static site using the Azure CLI](https://learn.microsoft.com/en-us/azure/static-web-apps/get-started-cli)
+
+### Create GitHub Personal Access Token for repo
+
+The Azure Static Web App creation process will create new GitHub actions in the repo so it needs access to do so.
+
+### Static Web App created using GitHub target repo
+
+Expiration: 7 days. These are only used for the setup, not any ongoing access.
+
+Repository access: Only select repositories; choose this repo.
+
+Permissions: Workflows (read/write) - fails; Administration (read/write) - fails; ALL OF THEM (read/write) (works!)
+
+Put the PAT into a convenient Bash variable
+
+```bash
+export GITHUB_PAT="github-PAT-from-above-goes-here"
+```
+
+Create the Static Web App with well-documented settings:
+
+```bash
+az staticwebapp create --sku Free \
+  --resource-group "rg-resume.stevebonds.com" \
+  --name "resume-stevebonds-com-2026" \
+  --api-location "" \
+  --app-location "/" \
+  --source "https://github.com/sbonds/resume" \
+  --branch "main" \
+  --token "$GITHUB_PAT"
+```
+
+This creates a new GitHub workflow action with a random name. Try it out!

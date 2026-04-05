@@ -3,14 +3,7 @@ name: Resume Upload to Azure Static Web App 2026
 # Manually add this to the GitHub repo secrets: AZURE_STATIC_WEB_APPS_API_TOKEN = Azure-side Static Web App deployment token
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build_and_deploy_job:
@@ -21,7 +14,7 @@ jobs:
        id-token: write
        contents: read
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           submodules: true
           lfs: false
