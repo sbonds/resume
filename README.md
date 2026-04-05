@@ -147,3 +147,51 @@ az staticwebapp create --sku Free \
 ```
 
 This creates a new GitHub workflow action with a random name. Try it out!
+
+(Forgot to set the location so it ends up in Central US. It worked though! It would be nice to narrow down those GitHub PAT permissions.)
+
+Try a new PAT with:
+
+* Actions (read/write)
+* Administration (read/write)
+* Contents (read/write)
+* Deployments (read/write)
+* Environments (read/write)
+* Variables (read/write)
+* Workflows (read/write)
+
+```bash
+az staticwebapp create --sku Free \
+  --location "West US 2" \
+  --resource-group "rg-resume.stevebonds.com" \
+  --name "resume-stevebonds-com-2026" \
+  --api-location "" \
+  --app-location "/" \
+  --source "https://github.com/sbonds/resume" \
+  --branch "main" \
+  --token "$GITHUB_PAT"
+```
+
+FAIL
+
+Try a new PAT with:
+
+* Actions (read/write)
+* Contents (read/write)
+* Secrets (read/write)
+* Variables (read/write)
+* Workflows (read/write)
+
+```bash
+az staticwebapp create --sku Free \
+  --location "West US 2" \
+  --resource-group "rg-resume.stevebonds.com" \
+  --name "resume-stevebonds-com-2026" \
+  --api-location "" \
+  --app-location "/" \
+  --source "https://github.com/sbonds/resume" \
+  --branch "main" \
+  --token "$GITHUB_PAT"
+```
+
+That makes sense-- the setup creates a secret, not a variable.
